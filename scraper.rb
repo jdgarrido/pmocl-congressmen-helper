@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'scraperwiki'
+require 'httparty'
 require 'open-uri'
 require 'json'
 
@@ -51,8 +52,8 @@ class CongressmenProfiles < PeopleStorage
   end
 
   def process
-    response = RestClient.get(@location, :content_type => :json)
-    response = JSON.parse(response)
+    response = HTTParty.get(@location, :content_type => :json)
+    response = JSON.parse(response.body)
     popit_congressmen = response['result']
 
     popit_congressmen.each do |congressman|
@@ -71,15 +72,15 @@ class CongressmenProfiles < PeopleStorage
       'comunas' => congressman['represent'].first['comunas'],
       'region' => congressman['represent'].first['region'],
       'organization_id' => congressman_organization_id,
-      'organizations' => @organizations,
+      'organizations' => organizations,
       'date_scraped' => Date.today.to_s
     }
     return record
   end
 
   def get_memberships organization_id
-    response = RestClient.get(@location_organizations + organization_id, :content_type => :json)
-    response = JSON.parse(response)
+    response = HTTParty.get(@location_organizations + organization_id, :content_type => :json)
+    response = JSON.parse(response.body)
     popit_membership = response['result']
 
     organizations = Array.new
