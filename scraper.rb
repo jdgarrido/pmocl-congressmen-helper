@@ -68,6 +68,7 @@ class CongressmenProfiles < PeopleStorage
     record = {
       'uid' => congressman['id'],
       'name' => congressman['name'],
+      'chamber' => congressman['title'],
       'district' => congressman['represent'].first['district'],
       'commune' => congressman['represent'].first['comunas'],
       'region' => congressman['represent'].first['region'],
