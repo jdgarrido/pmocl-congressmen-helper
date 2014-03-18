@@ -67,11 +67,11 @@ class CongressmenProfiles < PeopleStorage
     organizations = get_memberships congressman_organization_id
     record = {
       'uid' => congressman['id'],
-      'name' => congressman['name'],
+      'name' => I18n.transliterate(congressman['name']),
       'chamber' => congressman['title'],
-      'district' => congressman['represent'].first['district'],
-      'commune' => congressman['represent'].first['comunas'],
-      'region' => congressman['represent'].first['region'],
+      'district' => I18n.transliterate(congressman['represent'].first['district']),
+      'commune' => I18n.transliterate(congressman['represent'].first['comunas']),
+      'region' => I18n.transliterate(congressman['represent'].first['region']),
       'profile_image' => congressman['images'].first['url'],
       'organization_id' => congressman_organization_id,
       'organizations' => organizations,
@@ -86,10 +86,10 @@ class CongressmenProfiles < PeopleStorage
     popit_membership = response['result']
 
     organizations = Array.new
-    organizations[0] = popit_membership['name']
+    organizations[0] = I18n.transliterate(popit_membership['name'])
     i = 1
     popit_membership['other_names'].each do |organization|
-      organizations[i] = organization['name']
+      organizations[i] = I18n.transliterate(organization['name'])
       i = i + 1
     end
     return organizations
