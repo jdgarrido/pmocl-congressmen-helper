@@ -69,9 +69,9 @@ class CongressmenProfiles < PeopleStorage
       'uid' => congressman['id'],
       'name' => congressman['name'],
       'district' => congressman['represent'].first['district'],
-      'comunas' => congressman['represent'].first['comunas'],
+      'commune' => congressman['represent'].first['comunas'],
       'region' => congressman['represent'].first['region'],
-      'image' => congressman['images'].first['url'],
+      'profile_image' => congressman['images'].first['url'],
       'organization_id' => congressman_organization_id,
       'organizations' => organizations,
       'date_scraped' => Date.today.to_s
