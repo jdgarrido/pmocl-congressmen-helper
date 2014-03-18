@@ -3,6 +3,7 @@ require 'scraperwiki'
 require 'httparty'
 require 'open-uri'
 require 'json'
+require 'i18n'
 
 # --------------------
 # scrapable_classes.rb
