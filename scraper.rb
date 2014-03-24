@@ -68,7 +68,7 @@ class CongressmenProfiles < PeopleStorage
     if !congressman['memberships'].blank?
       congressman_organization_id = congressman['memberships'].first['organization_id']
       organizations = get_memberships congressman_organization_id
-    else
+    end
     record = {
       'uid' => congressman['id'],
       'name' => I18n.transliterate(congressman['name']),
