@@ -76,8 +76,8 @@ class CongressmenProfiles < PeopleStorage
       'district' => I18n.transliterate(congressman['represent'].first['district']),
       'commune' => I18n.transliterate(congressman['represent'].first['comunas']),
       'region' => I18n.transliterate(congressman['represent'].first['region']),
-      'profile_image' => nil,
-      'organization_id' => nil,
+      'profile_image' => '',
+      'organization_id' => '',
       'organizations' => organizations,
       'date_scraped' => Date.today.to_s
     }
