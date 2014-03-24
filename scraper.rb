@@ -36,7 +36,9 @@ class PeopleStorage
 
     if ((ScraperWiki.select("* from data where `uid`='#{record['uid']}'").empty?) rescue true)
       # Convert the array record['organizations'] to a string (by converting to json)
-      record['organizations'] = JSON.dump(record['organizations'])
+      if record['organizations'].is_a? Array
+        record['organizations'] = JSON.dump(record['organizations'])
+      end
       ScraperWiki.save_sqlite(['uid'], record)
       puts "Adds new record " + record['uid']
     else
