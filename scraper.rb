@@ -64,8 +64,11 @@ class CongressmenProfiles < PeopleStorage
   end
 
   def get_info congressman
-    congressman_organization_id = congressman['memberships'].first['organization_id']
-    organizations = get_memberships congressman_organization_id
+    organizations = String.new
+    if !congressman['memberships'].blank?
+      congressman_organization_id = congressman['memberships'].first['organization_id']
+      organizations = get_memberships congressman_organization_id
+    else
     record = {
       'uid' => congressman['id'],
       'name' => I18n.transliterate(congressman['name']),
@@ -73,8 +76,8 @@ class CongressmenProfiles < PeopleStorage
       'district' => I18n.transliterate(congressman['represent'].first['district']),
       'commune' => I18n.transliterate(congressman['represent'].first['comunas']),
       'region' => I18n.transliterate(congressman['represent'].first['region']),
-      'profile_image' => congressman['images'].first['url'],
-      'organization_id' => congressman_organization_id,
+      if !congressman['images'].nil? then 'profile_image' => congressman['images'].first['url'], end
+      if !organizations.empty? then 'organization_id' => congressman_organization_id, end
       'organizations' => organizations,
       'date_scraped' => Date.today.to_s
     }
