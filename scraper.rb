@@ -65,7 +65,7 @@ class CongressmenProfiles < PeopleStorage
 
   def get_info congressman
     organizations = String.new
-    if !congressman['memberships'].blank?
+    if !congressman['memberships'].empty?
       congressman_organization_id = congressman['memberships'].first['organization_id']
       organizations = get_memberships congressman_organization_id
     end
