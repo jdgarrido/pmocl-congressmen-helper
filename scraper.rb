@@ -76,11 +76,13 @@ class CongressmenProfiles < PeopleStorage
       'district' => I18n.transliterate(congressman['represent'].first['district']),
       'commune' => I18n.transliterate(congressman['represent'].first['comunas']),
       'region' => I18n.transliterate(congressman['represent'].first['region']),
-      if !congressman['images'].nil? then 'profile_image' => congressman['images'].first['url'], end
-      if !organizations.empty? then 'organization_id' => congressman_organization_id, end
+      'profile_image' => nil,
+      'organization_id' => nil,
       'organizations' => organizations,
       'date_scraped' => Date.today.to_s
     }
+    if !congressman['images'].nil? then record['profile_image'] = congressman['images'].first['url'] end
+    if !organizations.empty? then record['organization_id'] = congressman_organization_id end
     return record
   end
 
