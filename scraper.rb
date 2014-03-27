@@ -75,7 +75,7 @@ class CongressmenProfiles < PeopleStorage
       'uid' => congressman['id'],
       'name' => I18n.transliterate(congressman['name']),
       'chamber' => congressman['title'],
-      'district' => I18n.transliterate(congressman['represent'].first['district']),
+      'district' => I18n.transliterate(congressman['represent'].first['district'].gsub('ª','ta.')),
       'commune' => I18n.transliterate(congressman['represent'].first['comunas']),
       'region' => I18n.transliterate(congressman['represent'].first['region']),
       'profile_image' => '',
