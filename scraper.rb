@@ -79,7 +79,7 @@ class CongressmenProfiles < PeopleStorage
       'organizations' => organizations,
       'date_scraped' => Date.today.to_s
     }
-    if !congressman['images'].nil? then record['profile_image'] = congressman['images'].first['url'] end
+    #if !congressman['images'].nil? then record['profile_image'] = congressman['images'].first['url'] end
     if !organizations.empty? then record['organization_id'] = congressman_organization_id end
     return record
   end
