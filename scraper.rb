@@ -50,8 +50,8 @@ end
 class CongressmenProfiles < PeopleStorage
   def initialize()
     super()
-    @location = 'http://pmocl.popit.mysociety.org/api/v0.1/persons/?per_page=200'
-    @location_organizations = 'http://pmocl.popit.mysociety.org/api/v0.1/organizations/'
+    @location = 'http://congresistas-gt.popit.mysociety.org/api/v0.1/persons/?per_page=200'
+    @location_organizations = 'http://congresistas-gt.popit.mysociety.org/api/v0.1/organizations/'
   end
 
   def process
